@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Grade Calculator</title>
+</head>
+<body>
+    <h1>Grade Calculator</h1>
+    <form id="gradeForm">
+        <label for="subject1">Marks for Subject 1:</label>
+        <input type="number" id="subject1" name="subject1" required>
+        <br>
+        <label for="subject2">Marks for Subject 2:</label>
+        <input type="number" id="subject2" name="subject2" required>
+        <br>
+        <input type="submit" value="Calculate Grade">
+    </form>
+    <p id="result"></p>
+
+    <script>
+        document.getElementById("gradeForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            let subject1Marks = parseInt(document.getElementById("subject1").value);
+            let subject2Marks = parseInt(document.getElementById("subject2").value);
+            let grade;
+
+            if (subject1Marks > 90 && subject2Marks > 90) {
+                grade = "A";
+            } else if ((subject1Marks > 70 && subject1Marks <= 90) && (subject2Marks > 70 && subject2Marks <= 90)) {
+                grade = "B";
+            } else if ((subject1Marks > 50 && subject1Marks <= 70) && (subject2Marks > 50 && subject2Marks <= 70)) {
+                grade = "C";
+            } else {
+                grade = "Must re-appear";
+            }
+
+            document.getElementById("result").innerText = "Your grade is: " + grade;
+        });
+    </script>
+</body>
+</html>
